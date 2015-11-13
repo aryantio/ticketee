@@ -3,6 +3,7 @@ require 'spec_helper'
 feature "Viewing Tickets" do
   before do
     user = FactoryGirl.create(:user)
+    textmate_2 = FactoryGirl.create(:project, name: "TextMate 2")
     ticket = FactoryGirl.create(:ticket, project: textmate_2, title:"Make it shiny!", description: "Gradients! Starbursts! Oh my!")
     ticket.update(user: user)
     
@@ -20,7 +21,7 @@ feature "Viewing Tickets" do
   	  expect(page).to have_content("Make it shiny!")
   	end
 
-  	expect(page).to have_content("Gradients !, Starburst ! Oh My !")
+  	expect(page).to have_content("Gradients! Starbursts! Oh my!")
   end
 end
 
